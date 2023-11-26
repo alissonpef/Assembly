@@ -26,6 +26,7 @@ A verificação de números primos é uma tarefa clássica em programação. Vej
 
 O projeto do relógio digital em Assembly destaca a capacidade da linguagem para interagir com o hardware em um contexto prático. Aprenda como os conceitos fundamentais de Assembly são aplicados para criar uma aplicação funcional e visualmente estimulante.
 
+## Contribuições
 <div>
   <strong>Sinta-se à vontade para explorar os materiais e colaborar neste repositório. Boa jornada de aprendizado em Linguagem de Programação em C!</strong>
 </div>
