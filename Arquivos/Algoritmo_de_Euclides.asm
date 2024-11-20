@@ -5,11 +5,11 @@
 ; Caso algum registrador for igual a 0, o valor resultante sera o registrador diferente de 0
 ; Caso os dois forem iguais a 0, o valore sera 0
 
-	.org 1000H     ; Inicia o programa no endereço de memoria 1000H
-	LXI H, 2050H   ; Define o endereço de memória 2050H para o par HL
+	.org 1000H     ; Inicia o programa no endereÃ§o de memoria 1000H
+	LXI H, 2050H   ; Define o endereÃ§o de memÃ³ria 2050H para o par HL
 	MOV A, M       ; Move o par HL para o acumulador A
 	MOV B, A       ; Move o acumulador A para o B
-	LXI H, 2051H   ; Define o endereço de memória 2051H para o par HL
+	LXI H, 2051H   ; Define o endereÃ§o de memÃ³ria 2051H para o par HL
 	MOV A, M       ; Move o par HL para o acumulador A
 	MOV C, A       ; Move o acumulador A para o C
 	CPI 00h        ; Compara o valor do acumulador A com 0
@@ -38,7 +38,7 @@ Subtracao:     	   ; Define o loop chamado Subtracao, este por sua vez faz a sub
 Resultado:       	   ; Define o loop chamado Resultado, este por sua vez carrega o valor no par HL 2052H e finaliza o programa
 	MOV A, B       ; Move B para o acumulador A
 	ORA C          ; Realiza um OR entre A e C
-	LXI H, 2052H   ; Define o endereço de memória 2050H para o par HL
+	LXI H, 2052H   ; Define o endereÃ§o de memÃ³ria 2050H para o par HL
 	MOV M, A       ; Move o acumulador A para o par HL
 	HLT            ; Para o programa
 	
