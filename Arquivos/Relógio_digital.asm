@@ -7,16 +7,16 @@
 ; HORA_01 = horas(unidade) [H] e HORA_00 = horas(dezena) [L]
 
 ; Como todos os 06 registradores foram utitilzador para guardar as unidades anteriores 
-; e eu n„o gostaria de usar as portas para guardar valores, resolvi utilzar o MVI para passar um 
+; e eu n√£o gostaria de usar as portas para guardar valores, resolvi utilzar o MVI para passar um 
 ; imediato para o acumulador, assim sem precisar usar algum registrador ou porta para armazenar 
 ; valores.
 
-; Basicamente a conta È: 
+; Basicamente a conta √©: 
 ; MVI leva 7 T-States, NOP leva 4 T-States, DCR leva 4 T-States, 
-; JNZ leva 10 T-States caso pule e 7 T-States caso n„o pule.
-; Ent„o, o que temos: 
+; JNZ leva 10 T-States caso pule e 7 T-States caso n√£o pule.
+; Ent√£o, o que temos: 
 ; Total: 7 + 142 * (4 + 10) - 3 + 4 + 4 = 2000 T-state
-; Tempo total: 2000 ∑ 0,5 µs = 1 ms.
+; Tempo total: 2000 ¬∑ 0,5 ¬µs = 1 ms.
 
 .ORG 0000H
 ; Iniciamos o relogio em 00:00:00
@@ -47,9 +47,9 @@ JNZ DELAY
 NOP
 NOP
 
-; A lÛgica utilizada È basicamente ir comparando o valor do registrador B com um certo valor prÈ-definido, como segundos v„o
-; de 0 a 9 neste loop, comparamos de 0 a 9. Caso ele for o valor comparado, ele ir· para um loop em que ser· mostrado o valor na 
-; porta 05H. Est· lÛgica È utilizada em basicamente todo o trabalho, tendo apenas poucas mudanÁas. Como, por exemplo a dezena
+; A l√≥gica utilizada √© basicamente ir comparando o valor do registrador B com um certo valor pr√©-definido, como segundos v√£o
+; de 0 a 9 neste loop, comparamos de 0 a 9. Caso ele for o valor comparado, ele ir√° para um loop em que ser√° mostrado o valor na 
+; porta 05H. Est√° l√≥gica √© utilizada em basicamente todo o trabalho, tendo apenas poucas mudan√ßas. Como, por exemplo a dezena
 ; vai de 0 a 5, em vez de 0 a 9.
 
 MOV A, B
@@ -71,7 +71,7 @@ CPI 08H
 JZ OITO_05  
 CPI 09H
 JZ NOVE_05 
-JMP SEGUNDO_04 ; Se n„o for nenhum dos anteriores, vai para o SEGUNDO_04
+JMP SEGUNDO_04 ; Se n√£o for nenhum dos anteriores, vai para o SEGUNDO_04
 
 UM_05:
 MVI A, 44H
@@ -129,7 +129,7 @@ JMP SEGUNDO_05
 
 MVI B, 01H ; Coloca o valor 01H novamente para B
 
-; Loop que atribui os valores ao segundo(dezena), segue o mesmo principio do anterior, sÛ que como os segundos v„o atÈ 59, o loop vai atÈ 5
+; Loop que atribui os valores ao segundo(dezena), segue o mesmo principio do anterior, s√≥ que como os segundos v√£o at√© 59, o loop vai at√© 5
 ; visto que, quando ele for 60, ele vai para o loop minutos(unidade) e recebe o valor de 0.
 SEGUNDO_04:
 MOV A, C
@@ -186,7 +186,7 @@ OUT 04H
 INR C 
 JMP ATRIBUI_ZERO
 
-; Este segue o mesmo principio do segundos(unidade), a unica diferenÁa È que ele reseta os 
+; Este segue o mesmo principio do segundos(unidade), a unica diferen√ßa √© que ele reseta os 
 ; registradores usados anteriores.
 MINUTO_03:
 MVI B, 01H
@@ -213,7 +213,7 @@ JZ OITO_03
 CPI 09H
 JZ NOVE_03 
 
-JMP MINUTO_02 ; Se n„o for nenhum dos anteriores, vai para o MINUTO_02
+JMP MINUTO_02 ; Se n√£o for nenhum dos anteriores, vai para o MINUTO_02
 ZERO_03:
 MVI A, 77H
 OUT 05H
@@ -303,9 +303,9 @@ OUT 03H
 INR D
 JMP ATRIBUI_ZERO
 
-JMP MINUTO_02 ; Se n„o for nenhum dos anteriores, vai para o MINUTO_02
+JMP MINUTO_02 ; Se n√£o for nenhum dos anteriores, vai para o MINUTO_02
 
-; Este segue o mesmo principio do segundos(dezena),a unica diferenÁa È que ele reseta os 
+; Este segue o mesmo principio do segundos(dezena),a unica diferen√ßa √© que ele reseta os 
 ; registradores usados anteriores.
 MINUTO_02:
 MVI C, 00H
@@ -323,7 +323,7 @@ CPI 04H
 JZ QUATRO_02 ; ; 
 CPI 05H
 JZ CINCO_02 ; 
-JMP HORA_01 ; Se n„o for nenhum dos anteriores, vai para o HORA_01
+JMP HORA_01 ; Se n√£o for nenhum dos anteriores, vai para o HORA_01
 
 ZERO_02:
 MVI A, 77H
@@ -409,10 +409,10 @@ JZ OITO_01
 CPI 09H
 JZ NOVE_01 
 
-JMP HORA_00 ; Se n„o for nenhum dos anteriores, vai para o HORA_0
+JMP HORA_00 ; Se n√£o for nenhum dos anteriores, vai para o HORA_0
 
 ; Este segue o mesmo principio do minutos(unidade), a unica diferenca e que quando tivermos o valor 3 no loop hora_00, o loop 
-; da hora(dezena), e chegarmos no valor 3 na loop QUATRO_01, o loop ira finalizar, pois a maior hora que temos È 23:59:59 
+; da hora(dezena), e chegarmos no valor 3 na loop QUATRO_01, o loop ira finalizar, pois a maior hora que temos √© 23:59:59 
 
 ZERO_01:
 MVI A, 77H
@@ -526,7 +526,7 @@ OUT 01H
 INR H
 JMP ATRIBUI_ZERO
 
-; Este segue o mesmo principio do minutos(unidade), a unica diferenca e que so vai ate 2, pois a maior hora que temos È 23:59:59
+; Este segue o mesmo principio do minutos(unidade), a unica diferenca e que so vai ate 2, pois a maior hora que temos √© 23:59:59
 HORA_00:
 MVI B, 01H
 MVI C, 01H
@@ -538,7 +538,7 @@ CPI 01H
 JZ UM_00 ; 
 CPI 02H
 JZ DOIS_00 ;
-JMP END ; Se n„o for nenhum dos anteriores, vai para o END
+JMP END ; Se n√£o for nenhum dos anteriores, vai para o END
 
 UM_00:
 MVI A, 77H
@@ -564,7 +564,7 @@ OUT 00H
 INR L 
 JMP ATRIBUI_ZERO
 
-; LOOP que finaliza a execuÁ„o do programa
+; LOOP que finaliza a execu√ß√£o do programa
 END:
 MVI A, 77H
 OUT 05H
