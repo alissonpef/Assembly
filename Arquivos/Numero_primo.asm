@@ -1,67 +1,67 @@
 ; Professor: Ricardo Bohaczuk Venturelli
 ; Aluno: Alisson Ferreira
 
-; O algoritmo analisa se o número é primo com base em uma verificação de paridade.
-; Caso o número seja par, automaticamente não é primo. Se o número for impar, será verificado se ele é
-; divisivel por 3, caso o resto da divisão seja 0, ele não é primo, logo, se o resto da divisão for diferente 
-; de zero, ele será primo. Verificamos também se ele é divisivel por 05D, 07D, 11D e 13D pois algumas se não numeros como 25D e 49D
-; mesmo não sendo primos, no final sairam como 01H na porta 00H.
+; O algoritmo analisa se o nÃºmero Ã© primo com base em uma verificaÃ§Ã£o de paridade.
+; Caso o nÃºmero seja par, automaticamente nÃ£o Ã© primo. Se o nÃºmero for impar, serÃ¡ verificado se ele Ã©
+; divisivel por 3, caso o resto da divisÃ£o seja 0, ele nÃ£o Ã© primo, logo, se o resto da divisÃ£o for diferente 
+; de zero, ele serÃ¡ primo. Verificamos tambÃ©m se ele Ã© divisivel por 05D, 07D, 11D e 13D pois algumas se nÃ£o numeros como 25D e 49D
+; mesmo nÃ£o sendo primos, no final sairam como 01H na porta 00H.
 
-; Algumas excessões: neste algoritmo não é possível verificar o 01H, O2H, 03H, 05H, 07H, 0BH e 0DH como número primo, logo tive que 
-; criar uma verificação adicional para cada um desses casos.
+; Algumas excessÃµes: neste algoritmo nÃ£o Ã© possÃ­vel verificar o 01H, O2H, 03H, 05H, 07H, 0BH e 0DH como nÃºmero primo, logo tive que 
+; criar uma verificaÃ§Ã£o adicional para cada um desses casos.
 
-; Lembrando que 00H, não é um número primo e nem um número não primo, logo ele é um erro.
+; Lembrando que 00H, nÃ£o Ã© um nÃºmero primo e nem um nÃºmero nÃ£o primo, logo ele Ã© um erro.
 
-.ORG 0000				; Inicia o programa no endereço de memoria 0000H
+.ORG 0000				; Inicia o programa no endereÃ§o de memoria 0000H
     LXI SP, 0000H			; Carrega o registrador SP com o valor 0000h
 
 STANDBY: 
     JMP STANDBY      		; Salta para o loop STANDBY
 
-.ORG 0024H				; Inicia o programa no endereço de memoria 0024H
+.ORG 0024H				; Inicia o programa no endereÃ§o de memoria 0024H
 TRAP: 
-    IN 00h         		; Lê o valor na porta 00H
+    IN 00h         		; LÃª o valor na porta 00H
     MOV B, A       		; Move o acumulador A para B 
     MVI C, 02H     		; Move o valor 02H para o C
 
 VERIFICA_01:
-    IN 00H        		; Lê o valor na porta 00H
+    IN 00H        		; LÃª o valor na porta 00H
     CPI 01H       		; Compara com o valor 01H
     JZ NAO_PRIMO   		; Salta para o loop NAO_PRIMO se forem iguais
 
 VERIFICA_02:
-    IN 00H        		; Lê o valor na porta 00H
+    IN 00H        		; LÃª o valor na porta 00H
     CPI 02H       		; Compara com o valor 02H
     JZ PRIMO   			; Salta para o loop PRIMO se forem iguais
 
 VERIFICA_03:
-    IN 00H        		; Lê o valor na porta 00H
+    IN 00H        		; LÃª o valor na porta 00H
     CPI 03H       		; Compara com o valor 03H
     JZ PRIMO   			; Salta para o loop PRIMO se forem iguais
 
 VERIFICA_05:
-    IN 00H        		; Lê o valor na porta 00H
+    IN 00H        		; LÃª o valor na porta 00H
     CPI 05H       		; Compara com o valor 05H
     JZ PRIMO   			; Salta para o loop PRIMO se forem iguais
 
 VERIFICA_07:
-    IN 00H        		; Lê o valor na porta 00H
+    IN 00H        		; LÃª o valor na porta 00H
     CPI 07H       		; Compara com o valor 07H
     JZ PRIMO   			; Salta para o loop PRIMO se forem iguais
 
 VERIFICA_11:
-    IN 00H        		; Lê o valor na porta 00H
+    IN 00H        		; LÃª o valor na porta 00H
     CPI 0BH       		; Compara com o valor 0BH
     JZ PRIMO   			; Salta para o loop PRIMO se forem iguais
 
 VERIFICA_13:
-    IN 00H        		; Lê o valor na porta 00H
+    IN 00H        		; LÃª o valor na porta 00H
     CPI 0DH       		; Compara com o valor 0DH
     JZ PRIMO   			; Salta para o loop PRIMO se forem iguais
 
 LOOP_PRIMO:
     MOV A, B       		; Move B para o acumulador A
-    CMP C          		; Compara se o acumulador A é igual ao C
+    CMP C          		; Compara se o acumulador A Ã© igual ao C
     JC ATRIBUI_3        	; Salta para o loop ATRIBUI_3 se o resultado for menor
     JZ NAO_PRIMO 			; Salta para o loop NAO_PRIMO se forem iguais
     MOV D, A       		; Move o acumulador A para D
@@ -69,7 +69,7 @@ LOOP_PRIMO:
 
 DIVISAO:
     SUB D          		; Subtrai o D do acumulador A
-    JNC RESTO_DIV 		; Salta para RESTO_DIV se não houver carry
+    JNC RESTO_DIV 		; Salta para RESTO_DIV se nÃ£o houver carry
     INR C          		; Incrementa o valor em C
     INR C          		; Incrementa novamente o valor em C
     JMP LOOP_PRIMO 		; Salta para LOOP_PRIMO
@@ -77,14 +77,14 @@ DIVISAO:
 RESTO_DIV:
     MOV A, D       		; Move D para o acumulador A
     ORA A          		; Realiza um OR com o acumulador A
-    JNZ NAO_PRIMO 		; Salta para NAO_PRIMO se o resultado não for zero
+    JNZ NAO_PRIMO 		; Salta para NAO_PRIMO se o resultado nÃ£o for zero
     INR C          		; Incrementa o valor em C
     INR C          		; Incrementa novamente o valor em C
     JMP LOOP_PRIMO 		; Salta para LOOP_PRIMO
 
 LOOP_PRIMO_2:
     MOV A, B       		; Move B para o acumulador A
-    CMP C          		; Compara se o acumulador A é igual ao C
+    CMP C          		; Compara se o acumulador A Ã© igual ao C
     JC ATRIBUI_5 			; Salta para o loop ATRIBUI_5 se houver carry
     JZ NAO_PRIMO 			; Salta para o loop NAO_PRIMO se forem iguais
     MOV D, A       		; Move o acumulador A para D
@@ -92,7 +92,7 @@ LOOP_PRIMO_2:
 
 DIVISAO_2:
     SUB D          		; Subtrai o D do acumulador A
-    JNC RESTO_DIV_2 		; Salta para RESTO_DIV_2 se não houver carry
+    JNC RESTO_DIV_2 		; Salta para RESTO_DIV_2 se nÃ£o houver carry
     INR C          		; Incrementa o valor em C
     INR C          		; Incrementa novamente o valor em C
     INR C          		; Incrementa mais uma vez o valor em C
@@ -101,7 +101,7 @@ DIVISAO_2:
 RESTO_DIV_2:
     MOV A, D       		; Move D para o acumulador A
     ORA A          		; Realiza um OR com o acumulador A
-    JNZ NAO_PRIMO 		; Salta para NAO_PRIMO se o resultado não for zero
+    JNZ NAO_PRIMO 		; Salta para NAO_PRIMO se o resultado nÃ£o for zero
     INR C          		; Incrementa o valor em C
     INR C          		; Incrementa novamente o valor em C
     INR C          		; Incrementa mais uma vez o valor em C
@@ -112,7 +112,7 @@ ATRIBUI_3:
     JMP LOOP_PRIMO_2 		; Salta para LOOP_PRIMO_2
 
 ATRIBUI_5:
-	IN 00H			; Lê o valor na porta 00H
+	IN 00H			; LÃª o valor na porta 00H
 	JMP COMPARA_5		; Salta para COMPARA_5
 
 COMPARA_5: 	               	
@@ -121,10 +121,10 @@ COMPARA_5:
 	JZ NAO_PRIMO     		; Salta para NAO_PRIMO  se for igual
 	JC ATRIBUI_7        	; Salta para ATRIBUI_7 se houver carry 
 	SUB B           		; Subtrai B do acumulador A
-	JMP COMPARA_5        	; Salta para COMPARA_5, até o valor for igual ou houver carry
+	JMP COMPARA_5        	; Salta para COMPARA_5, atÃ© o valor for igual ou houver carry
 
 ATRIBUI_7:
-	IN 00H			; Lê o valor na porta 00H
+	IN 00H			; LÃª o valor na porta 00H
 	JMP COMPARA_7		; Salta para COMPARA_5
 
 COMPARA_7: 	               	
@@ -133,10 +133,10 @@ COMPARA_7:
 	JZ NAO_PRIMO     		; Salta para NAO_PRIMO  se for igual
 	JC ATRIBUI_11        	; Salta para ATRIBUI_11 se houver carry 
 	SUB B           		; Subtrai B do acumulador A
-	JMP COMPARA_7        	; Salta para COMPARA_5, até o valor for igual ou houver carry
+	JMP COMPARA_7        	; Salta para COMPARA_5, atÃ© o valor for igual ou houver carry
 
 ATRIBUI_11:
-	IN 00H			; Lê o valor na porta 00H
+	IN 00H			; LÃª o valor na porta 00H
 	JMP COMPARA_11		; Salta para COMPARA_5
 
 COMPARA_11: 	               	
@@ -145,10 +145,10 @@ COMPARA_11:
 	JZ NAO_PRIMO     		; Salta para NAO_PRIMO  se for igual
 	JC ATRIBUI_13       	; Salta para ATRIBUI_13 se houver carry 
 	SUB B           		; Subtrai B do acumulador A
-	JMP COMPARA_11        	; Salta para COMPARA_5, até o valor for igual ou houver carry
+	JMP COMPARA_11        	; Salta para COMPARA_5, atÃ© o valor for igual ou houver carry
 
 ATRIBUI_13:
-	IN 00H			; Lê o valor na porta 00H
+	IN 00H			; LÃª o valor na porta 00H
 	JMP COMPARA_13		; Salta para COMPARA_5
 
 COMPARA_13: 	               	
@@ -157,7 +157,7 @@ COMPARA_13:
 	JZ NAO_PRIMO     		; Salta para NAO_PRIMO  se for igual
 	JC PRIMO        		; Salta para PRIMO se houver carry 
 	SUB B           		; Subtrai B do acumulador A
-	JMP COMPARA_13       	; Salta para COMPARA_5, até o valor for igual ou houver carry
+	JMP COMPARA_13       	; Salta para COMPARA_5, atÃ© o valor for igual ou houver carry
 
 PRIMO:
     MVI A, 01h 			; Move 01H para o acumulador A
@@ -172,6 +172,6 @@ FIM:
     POP D 				; Desempilha o D
     POP H 				; Desempilha o par HL
     POP PSW 			; Desempilha as flags e o acumulador
-    EI 				; Habilita interrupções
+    EI 				; Habilita interrupÃ§Ãµes
     RET 				; Retorna da sub-rotina
 
