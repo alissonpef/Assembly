@@ -1,32 +1,54 @@
-# Assembly
+# Organização e Arquitetura de Computadores I - Assembly  
+**Professor:** Ricardo Bohaczuk Venturelli  
 
-## Descrição
+## 📚 Ementa  
+Este repositório contém materiais, exercícios e exemplos práticos relacionados à parte de **Assembly** da disciplina de **Organização e Arquitetura de Computadores I**, com foco no uso do simulador **8085** e na programação de baixo nível.  
 
-Um repositório dedicado à exploração e aprendizado da linguagem Assembly. Aqui, você encontrará implementações de projetos intrigantes, como algoritmo de Booth, algoritmo de Euclides, verificação de números primos e um relógio digital programado em Assembly.
+### Conteúdo abordado:  
+1. **Sistemas de Numeração**  
+   - Ponto flutuante e números negativos.  
+2. **Sistemas Computacionais**  
+   - Hardware e software de um computador.  
+   - Instruções de máquina e linguagem de montagem (Assembly).  
+3. **Conjunto de Instruções**  
+   - CISC e RISC.  
+4. **Estudos de Caso**  
+   - Computador didático BIP I.  
+   - Processador didático nPD.  
+5. **Arquitetura ARM**  
+   - Famílias de processadores ARM e o processador Cortex-M0.  
+   - Assembly do Cortex-M0.  
+6. **Estruturas de Controle em Assembly**  
+   - Desvios, repetições, suporte a procedimentos e pilhas.  
+7. **Pipelining**  
+   - Otimização de processos em sistemas de processamento.  
+8. **Tecnologias de Memórias**  
+   - Acesso e organização de memória.  
+9. **Entrada e Saída de Dados**  
+   - Processamento de dados de entrada e saída.  
+10. **Interrupção e DMA**  
+   - Gerenciamento de interrupções e acesso direto à memória.  
+11. **Avaliação de Desempenho**  
+   - Medição e análise do desempenho de sistemas computacionais.  
 
-## A Importância do Assembly
+## 🎯 Objetivos da Disciplina  
+- Compreender o funcionamento de processadores e microcontroladores, como o 8085, e como utilizá-los na programação em Assembly.  
+- Desenvolver habilidades para escrever código de Assembly eficiente para sistemas embarcados e dedicados.  
+- Analisar e comparar diferentes arquiteturas de processadores, como CISC e RISC, além de entender suas implicações no desempenho do sistema.  
 
-Assembly é uma linguagem de baixo nível que permite uma compreensão profunda do funcionamento interno de computadores. Escrever código em Assembly oferece benefícios, como controle preciso sobre os recursos do hardware e a capacidade de otimizar o desempenho para tarefas específicas. É uma linguagem essencial para programadores que desejam entender a arquitetura do computador e desenvolver software eficiente.
+## 📂 Estrutura do Repositório  
+- **/Algoritmos**: Exemplos práticos em Assembly utilizando o simulador 8085.  
+  - `Algoritmo_de_Booth.asm`: Implementação do algoritmo de Booth em Assembly.  
+  - `Algoritmo_de_Euclides.asm`: Implementação do algoritmo de Euclides.  
+  - `Numero_primo.asm`: Código para calcular números primos.  
+  - `Relógio_digital.asm`: Código para implementar um relógio digital utilizando o 8085.  
+- **/Simuladores**: Links e instruções para o uso do simulador 8085.  
 
-## Projetos Incluídos
+## 🛠️ Ferramentas Recomendadas  
+- **Simulador 8085:** Ferramenta para simulação de código Assembly no microprocessador 8085.  
 
-### Algoritmo de Booth
+## 📫 Contato  
+Dúvidas? Entre em comigo por e-mail:  
+- **Alisson Pereira Ferreira:** [email](mailto:alissonpef@gmail.com)
 
-O algoritmo de Booth é uma técnica de multiplicação binária que visa otimizar o processo de multiplicação, reduzindo o número de operações necessárias. Explore a implementação em Assembly para compreender como essa técnica é aplicada em nível de baixo nível.
-
-### Algoritmo de Euclides
-
-O algoritmo de Euclides é utilizado para encontrar o maior divisor comum entre dois números. Descubra como esse algoritmo fundamental é expresso em Assembly, proporcionando uma visão única sobre a manipulação de operações matemáticas em nível de máquina.
-
-### Números Primos
-
-A verificação de números primos é uma tarefa clássica em programação. Veja como essa verificação é realizada em Assembly, revelando a eficiência e simplicidade da linguagem quando aplicada a problemas matemáticos específicos.
-
-### Relógio Digital
-
-O projeto do relógio digital em Assembly destaca a capacidade da linguagem para interagir com o hardware em um contexto prático. Aprenda como os conceitos fundamentais de Assembly são aplicados para criar uma aplicação funcional e visualmente estimulante.
-
-## Contribuições
-<div>
-  <strong>Sinta-se à vontade para explorar os materiais e colaborar neste repositório. Boa jornada de aprendizado em Linguagem de Programação em C!</strong>
-</div>
+Aproveite o aprendizado! 🚀
